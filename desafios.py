@@ -47,7 +47,12 @@ def verificar_tag_valida(tag):
     Verifica se uma tag está no formato 'vX.Y' (ex: v1.0, v2.1).
     Retorna True se o formato for válido, caso contrário False.
     """
-    pass
+    import re
+    if not isinstance(tag, str):
+        raise TypeError("A tag deve ser uma string.")
+
+    padrao = r"^v\d+\.\d+$"
+    return bool(re.match(padrao, tag))
 
 
 def gerar_relatorio_final(funcoes_concluidas):
@@ -60,4 +65,12 @@ def gerar_relatorio_final(funcoes_concluidas):
     ->
     "Desafio concluído! 2 funções implementadas com sucesso."
     """
-    pass
+    if not isinstance(funcoes_concluidas, list):
+        raise TypeError("O parâmetro deve ser uma lista.")
+    if not all(isinstance(f, str) for f in funcoes_concluidas):
+        raise ValueError("Todos os itens da lista devem ser strings.")
+
+    relatorio = "Relatório Final:\n"
+    for funcao in funcoes_concluidas:
+        relatorio += f"- {funcao}\n"
+    return relatorio.strip()
