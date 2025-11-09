@@ -70,7 +70,7 @@ def gerar_relatorio_final(funcoes_concluidas):
     if not all(isinstance(f, str) for f in funcoes_concluidas):
         raise ValueError("Todos os itens da lista devem ser strings.")
 
-    relatorio = "Relatório Final:\n"
+    relatorio = "Relatorio Final:\n"
     for funcao in funcoes_concluidas:
         relatorio += f"- {funcao}\n"
     return relatorio.strip()
